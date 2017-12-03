@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<script src="js/vue.js"></script>
+<body>
+<div id="vOn">
+    <p>本场比赛得分{{score}}</p>
+    <p>输入框分数{{scoreO}}</p>
+    <p>
+        <button v-on:click="plus">加分</button>
+    </p>
+    <p>
+        <button v-on:click="down">减分</button>
+    </p>
+    <p><input type="text" v-on:keyup.enter="onEnter" v-model="scoreO" ></p>
+
+</div>
+</body>
+<script>
+	vOn = new Vue({
+		el: '#vOn',
+		data: {
+			score: 0,
+			scoreO: ''
+		},
+		methods: {
+			plus: function () {
+				this.score++
+			},
+			down: function () {
+				if (this.score > 0) {
+					this.score--
+				}
+			},
+			onEnter: function () {
+				this.score =  this.score+parseInt(this.scoreO)
+			}
+		}
+	})
+</script>
+</html>

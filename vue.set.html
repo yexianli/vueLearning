@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.set全局操作</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="vueSet">
+    {{count}}
+    <ul>
+        <li v-for="n in arr">{{n}}</li>
+    </ul>
+</div>
+<p><button onclick="add()">add</button></p>
+</body>
+<script>
+    function add() {
+//Vue.set(outData,'count',2)
+//        vueSet.count++
+//        outData.count++
+//        vueSet.arr[1]='ff'单独写这个不会改变
+//	    Vue.set(vueSet.arr,1,'ff')
+	    Vue.set(outData.arr,1,'ff')
+    }
+    var outData={
+    	count:1,
+        arr:['aaa','bbb','ccc']
+    }
+    var vueSet=new Vue({
+    	el:"#vueSet",
+        data:outData
+    })
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text&v-html</title>
+</head>
+<script src="js/vue.js"></script>
+<body>
+<div id="vHtml&&v-text"></div>
+<div id="vHtml">
+    <p v-text="message"></p>
+    <p v-html="message"></p>
+    <p>{{message}}</p>
+    <hr>
+    <h2>v-html,但易于被黑客攻击，不推荐使用</h2>
+    <span>使用v-text输出含标签的变量</span>
+    <p v-text="ye"></p>
+    <p v-html="ye"></p>
+    <span>使用v-html输出含标签的变量</span>
+    <p>{{ye}}<span>直接使用变量输出含标签的变量</span></p>
+</div>
+</body>
+<script>
+    vhtml=new Vue({
+    	el:"#vHtml",
+        data:{
+message:"你好啊",
+            ye:"<h3>111</h3>"
+        }
+    })
+</script>
+</html>

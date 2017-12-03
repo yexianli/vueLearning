@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods事件调用时的方法</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{count}}</div>
+    <div><br></div>
+    <button v-on:click="add(3,$event)">add</button>
+    <div><br></div>
+
+    <div><but v-on:click.native='add(3,$event)'></but></div>
+    <!--vue$event相当于原生mouseEvent-->
+</div>
+<button onclick="app.down(3)" style="margin-top: 30px">外部add</button>
+</body>
+<script>
+    var content={
+    	template:"<button style='color: red'>组件</button>"
+    }
+    var app=new Vue({
+    	el:'#app',
+        data:{
+    		count:0
+        },
+        components:{
+    		'but':content
+        },
+        methods:{
+    		add:function (num,event) {
+    			if(num!=''){
+				    this.count=this.count+num
+                }else{
+    				this.count++
+                }
+console.log(event)
+		    },
+            down:function (num) {
+	            this.count=this.count+3
+            }
+        }
+    })
+</script>
+</html>

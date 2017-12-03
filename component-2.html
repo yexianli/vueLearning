@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件很重要</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="con">
+    <yexian v-bind:where="message"></yexian>
+    <h2 style='color:yellow'>我来自{{message}}</h2>
+    <!--v-bind就不能用china要用变量绑定-->
+    <yexianli where="china"></yexianli>
+</div>
+
+
+</body>
+<script>
+
+	var con = new Vue({
+		el: "#con",
+		data: {
+			message: 'pingXiang'
+		},
+		components: {
+			"yexian": {
+				template: "<h2 style='color:yellow'>我来自{{where}}</h2>",
+				props: ['where']
+			},
+			"yexianli": {
+				template: "<h2 style='color:yellow'>我来自{{where}}</h2>",
+				props: ['where']
+			}
+
+		}
+	})
+
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.extend</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<h3>扩展实例构造</h3>
+<div id="extend">
+    <author></author>
+    <div id="author"></div>
+</div>
+</body>
+<script>
+	var authorExtend = Vue.extend({
+		template: "<p><a v-bind:href='authorUrl'>{{authorName}}</a></p>",
+		data: function () {
+			return {
+				authorName: 'yexianli',
+				authorUrl: 'http://jspang.com'
+			}
+		}
+	});
+	new authorExtend().$mount('author')
+	new authorExtend().$mount('#author')
+</script>
+</html>

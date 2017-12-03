@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<script src="js/vue.js"></script>
+<body>
+<div id="app">
+    <p v-if="log">你好，叶贤礼</p>
+    <p v-else>我不好</p>
+    <p v-show="log">你好吗？</p>
+    <input type="checkbox" id="ye" v-model="log">log={{log}}
+</div>
+</body>
+<script>
+    app=new Vue({
+    	el:'#app',
+        data:{
+    		log:false
+        }
+    })
+</script>
+</html>

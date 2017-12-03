@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+</head>
+<script src="js/vue.js"></script>
+<body>
+<div id="bind">
+    <p>v-model<input type="text" v-model="message"></p>
+    <p>v-model.lazy<input type="text" v-model.lazy="message"></p>
+    <p>v-model.number<input type="text" v-model.number="message"></p>
+    <p>v-model.trim<input type="text" v-model.trim="message"></p>
+    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>
+    <h5>多选框绑定一个值</h5>
+    <div><input type="checkbox" id="isTure" v-model="isTure">
+        <label for="isTure">{{isTure}}</label></div>
+    <hr>
+    <div>wo{{message}} hai hao</div>
+    <hr>
+    <h5>多选框绑定一个数组</h5>
+    <div>ye<input type="checkbox" v-model="ye" value="ye"></input>
+        liu<input type="checkbox" v-model="ye" value="liu">
+        liang<input type="checkbox" v-model="ye" value="liang"></div>
+    <div>{{ye}}</div>
+    <hr>
+    <h5>单选框绑定</h5>
+    <div><input type="radio" value="男" v-model="sex" id="boy"><label for="boy">男</label>
+        <input type="radio" value="女" v-model="sex" id="girl"><label for="girl">女</label>
+        <p>您选中的性别是{{sex}}</p></div>
+</div>
+</body>
+<script>
+	bind = new Vue({
+		el: '#bind',
+		data: {
+			message: '',
+			isTure: '',
+			ye: [],
+			sex: ''
+		}
+	})
+</script>
+</html>

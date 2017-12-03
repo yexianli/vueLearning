@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.directive自定义指令</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div  id="directive">
+    <div>{{message}}</div>
+    <div v-zidingyi="color">{{num}}</div>
+    <button v-on:click="add">加一</button>
+</div>
+<p>
+    <button onclick="unbind()">解绑</button>
+</p>
+</body>
+<script>
+    function unbind() {
+	    app.$destroy()
+    }
+	Vue.directive("zidingyi",{
+		bind:function (el,binding) {
+			el.style="color:"+binding.value
+            console.log('1,bind')
+		},
+		inserted:function () {
+			console.log('2,inserted')
+		},
+        update:function () {
+	        console.log('3,update')
+        },
+        componentUpdated:function () {
+            console.log('4,componentUpdated')
+        },
+        unbind:function () {
+	        console.log('5,unbind')
+        }
+    });
+
+app=new Vue({
+	el:"#directive",
+    data:{
+		message:"自定义指令",
+        num:0,
+        color:"red"
+        },
+	methods:{
+		add:function () {
+			this.num++
+		}
+    }
+})
+</script>
+</html>

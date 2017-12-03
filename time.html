@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hour{
+            color: red;
+        }
+        .minute{
+            color: aqua;
+        }
+        .second{
+            color: chartreuse;
+        }
+    </style>
+
+</head>
+<body>
+<div id="time">
+    <p><span class="hour">{{hour}}</span>:<span class="minute">{{minute}}</span>:<span class="second">{{second}}</span></p>
+</div>
+</body>
+<script src="js/vue.min.js"></script>
+<script>
+	var time = new Vue({
+		el: '#time',
+		data: {
+			hour: 0,
+			minute: 0,
+			second: 0
+		},
+	})
+	change();
+
+	function change() {
+		dt = new Date();
+		time.hour =  format(dt.getHours(), 2);
+		time.minute = format(dt.getMinutes(), 2);
+		time.second = format(dt.getSeconds(), 2);
+		setTimeout(change,1000)
+
+	}
+	function format(n, digit) {
+		if (n < 10) {
+			n = '0' + n
+		}
+		return n
+	}
+//	setInterval(change, 1000)
+
+</script>
+
+</html>

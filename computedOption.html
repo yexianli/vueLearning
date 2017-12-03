@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变原始数据的格式</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="computed">
+    <div>{{newPrice}}</div>
+    <ul>
+        <li v-for="index in reservseNews">{{index.title}}-{{index.date}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var newList=[
+    {title:"中国进入国际贸易组织",date:"2004"},
+	    {title:"日本进入国际贸易组织",date:"1983"},
+	    {title:"澳大利亚进入国际贸易组织",date:"2007"},
+	    {title:"美国进入国际贸易组织",date:"1999"}
+    ]
+var comput=new Vue({
+	el:'#computed',
+    data:{
+		price:100,
+        newList:newList
+    },
+    computed:{
+		newPrice:function () {
+            return this.price=this.price+'元'
+		},
+        reservseNews:function () {
+            return this.newList.reverse()
+        }
+    }
+})
+</script>
+</html>

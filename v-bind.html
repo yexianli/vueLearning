@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .classA{
+            color: red;
+        }
+        .classB{
+            font-size: 26px}
+    </style>
+
+</head>
+<body>
+<div id="app">
+    <img :src="src" alt="">
+    <p>{{message}}</p>
+    <p :class="classA">绑定classA</p>
+    <p :class="{classB:isOk}">isok</p>
+    <p :class="[classA,classB]">classA和classB以数组形式</p>
+    <p :class="isOk?classA:classB">三元运算符绑定</p>
+    <p :style="{color:'black',background:'blue',width:'100px'}">绑定style</p>
+    <p :style="styleObject">以对象形式绑定style</p>
+    <hr>
+    <div>
+        <input type="checkbox" id="isOk" v-model="isOk">
+        <label for="isOk">isOk={{isOk}}</label>
+    </div>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    app=new Vue({
+    el:'#app',
+        data:{
+    	src:'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=827482524,2937791719&fm=27&gp=0.jpg',
+    	message:'1234 ',
+    	classA:'classA',
+            classB:'classB',
+            isOk:true,
+	        styleObject:{
+		        color:"red",
+                fontSize:"23px"
+
+	        }
+        }
+
+
+    })
+</script>
+</html>

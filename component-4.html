@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-4</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="conF">
+    <component v-bind:is="who"></component>
+    <button v-on:click="changeComponent">changeComponent</button>
+</div>
+</body>
+<script>
+
+	var componentA = {template: '<div style="color: #5597B4">111111</div>'}
+	var componentB = {template: '<div style="color: chartreuse">22222</div>'}
+	var componentC = {template: '<div style="color: deeppink">333333</div>'}
+	var conF = new Vue({
+		el: '#conF',
+		data: {
+			who: 'componentA'
+		},
+
+		components: {
+			'componentA': componentA,
+			'componentB': componentB,
+			'componentC': componentC,
+		},
+		methods: {
+			changeComponent: function () {
+				if (this.who == "componentA") {
+					this.who = "componentB"
+				} else if (this.who == "componentB") {
+					this.who = "componentC"
+				} else if (this.who == "componentC") {
+					this.who = "componentA"
+				}
+			}
+		}
+	})
+</script>
+</html>

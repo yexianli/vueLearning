@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-pre&v-cloak&v-once</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="other">
+    <span>v-pre不进行渲染原样输出</span>
+    <p v-pre>{{message}}</p>
+    <span v-cloak>v-cloak渲染后进行输出</span>
+    <hr>
+    <p>v-once只进行一次渲染不同过表单改变而改变</p>
+    <div v-once>{{message}}</div>
+    <input type="text" v-model="message">
+    <div>{{message}}</div>
+</div>
+
+
+</body>
+<script>
+    other=new Vue({
+    	el:"#other",
+        data:{
+message:'你好啊'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot成对出现</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <yexianli>
+        <span slot="blogUrl">{{yexianliData.blogUrl}}</span>
+        <span slot="netName">宇智波鼬ye</span>
+        <span slot="skill">{{yexianliData.skill}}</span>
+    </yexianli>
+</div>
+<template id="tep">
+    <!--vue外部需一个容器去掉这里的div会报错-->
+    <div>
+    <p>博客地址：<slot name="blogUrl"></slot></p>
+    <p>网名：<slot name="netName"></slot></p>
+    <p>技术类型:<slot name="skill"></slot></p>
+    </div>
+</template>
+</body>
+<script>
+    var yexian={
+    	template:"#tep"
+    }
+    var app=new Vue({
+    	el:'#app',
+        data:{
+    		yexianliData:{
+    			blogUrl:'http://jspang.com',
+                netName:'技术胖',
+                skill:'web前端'
+            }
+        },
+        components:{
+    		'yexianli':yexian
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<h3>template三种写法</h3>
+<div id="template">
+    <p>{{message}}</p>
+    <!--<template></template>-->
+</div>
+<template id="dd2"><h3 style="color: red">template第二种写法</h3></template>
+<script type="x-template" id="dd3"><h3 style="color: red">我是script标签模板</h3></script>
+</body>
+<script>
+    var template=new Vue({
+el:"#template",
+        data:{
+	message:'你好啊'
+        },
+//        template:'#dd2'
+	    template:'#dd3'
+//    template:'<h2>template第一种写法</h2>>'
+    })
+</script>
+</html>

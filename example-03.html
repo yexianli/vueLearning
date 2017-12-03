@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例事件</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{count}}
+    <div><br></div>
+    <div><button v-on:click="add">add</button></div>
+    <div><br></div>
+</div>
+<div><button onclick="reduce()">reduce</button></div>
+<div><button onclick="reduceOnce()">reduceOnce</button></div>
+<div><button onclick="off()">$off事件</button></div>
+</body>
+<script>
+    var app=new Vue({
+    	el:'#app',
+        data:{
+    		count:0
+        },
+        methods:{
+    		add:function () {
+                this.count++
+		    }
+        }
+    })
+    app.$on('reduce',function () {
+    	console.log('执行了reduce方法')
+        this.count--
+    })
+    function reduce() {
+    	app.$emit('reduce')
+
+    }
+    app.$once('reduceOnce',function () {
+	    console.log('执只能调用一次')
+	    this.count--
+    })
+    function reduceOnce() {
+	    app.$emit('reduceOnce')
+
+    }
+    function off() {
+        app.$off('reduce')
+    }
+</script>
+</html>
